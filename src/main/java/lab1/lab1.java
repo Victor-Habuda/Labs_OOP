@@ -3,33 +3,39 @@ package lab1;
 
 public class lab1 {
     public static void main (){
+
+        xor((double) 12.0, (double) 14.0, (double) 16.0, (double) 18.0, (double) 0.0, (double) 0.0,
+                (double) 0.0, (double) 0.0 );
 //        getVariant(); //c5 = 3, c7 = 0, c11 = 10
 
-//        double[][] matrixA = new double[][]{{0.0, 25.0}, {42.0, 0.0}}; // Результат Matrix C: {{15.0, 0.0}, {42.0, 99.0}}
-//        double[][] matrixB = new double[][]{{15.0, 25.0}, {0.0, 99.0}};
-        double[][] matrixA = new double[][]{{12.0, 14.0}, {16.0, 18.0}};
-        double[][] matrixB = new double[][]{{0.0, 0.0}, {0.0, 0.0}}; // Результат Matrix C: {{12.0, 14.0}, {16.0, 18.0}}
+    }
+    public static double[][] xor(double a11, double a12, double a21, double a22, double b11, double b12,
+                                 double b21, double b22) {
 
-
-//        double[][] matrixA = new double[][]{{7.0, 0.0}, {0.0, 5.0}};
-//        double[][] matrixB = new double[][]{{7.0, 3.0}, {8.0, 0.0}}; // Результат Matrix C: {{0.0, 3.0}, {8.0, 5.0}}
+        double[][] matrixA = new double[][]{{a11, a12}, {a21, a22}};
+        double[][] matrixB = new double[][]{{b11, b12}, {b21, b22}};
 
         double[][] c = new double[2][2];
+
         System.out.println("Matrix A");
         printMatrix(matrixA);
         System.out.println("Matrix B");
         printMatrix(matrixB);
-        for(int i = 0; i < 2; i++){
-            for(int j = 0; j < 2; j++){
+
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
                 long a = Double.doubleToRawLongBits(matrixA[i][j]);
                 long b = Double.doubleToRawLongBits(matrixB[i][j]);
-                long res = a^b;
+                long res = a ^ b;
                 c[i][j] = Double.longBitsToDouble(res);
             }
         }
         System.out.println("Matrix C");
         printMatrix(c);
+        return c;
     }
+
+
     public static void printMatrix(double[][] matrix) {
         for (int i = 0; i < matrix.length; i++) {
             System.out.print("[ ");
@@ -39,6 +45,8 @@ public class lab1 {
             System.out.println("]");
         }
     }
+
+
     public static void getVariant(){
         int id = 5103;
         int c5 = id % 5;
