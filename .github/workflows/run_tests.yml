@@ -1,0 +1,24 @@
+name: run_tests.yml
+on:
+  push:
+    branches: [ "main", "master" ] # Запускати при пуші в основну гілку
+  pull_request:
+    branches: [ "main", "master" ] # Запускати при створенні PR
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 25 # Або версія, яку ви використовуєте (11, 21 тощо)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build and run tests
+        run: mvn -B test --file pom.xml
