@@ -43,8 +43,6 @@
 * **Unit Tests:** Використано **JUnit 5** для перевірки коректності XOR операцій.
 * **GitHub Actions:** Налаштовано пайплайн `.github/workflows/maven.yml`, який автоматично запускає `mvn test` при кожному пуші.
 
-### Статус тестів:
-![Java CI with Maven](https://github.com/ВАШ_ЛОГІН/НАЗВА_РЕПОЗИТОРІЮ/actions/workflows/maven.yml/badge.svg)
 
 ---
 
