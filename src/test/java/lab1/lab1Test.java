@@ -12,7 +12,7 @@ class Lab1Test {
         double b11 = 0.0, b12 = 0.0, b21 = 0.0, b22 = 0.0;
 
 
-        double[][] result = lab1.xor(a11, a12, a21, a22, b11, b12, b21, b22);
+//        double[][] result = lab1.xor(a11, a12, a21, a22, b11, b12, b21, b22);
 
         assertArrayEquals(new double[]{a11, a12}, result[0], "Рядок 0 не збігається");
         assertArrayEquals(new double[]{a21, a22}, result[1], "Рядок 1 не збігається");
