@@ -44,7 +44,6 @@ class Lab2Test {
 
     @Test
     void testNoMatchesInQuestions() {
-        // Питання є, але слів довжиною 10 немає
         processor.setText(new StringBuilder("Хто це? Що там?"));
         processor.setTargetLength(10);
 
