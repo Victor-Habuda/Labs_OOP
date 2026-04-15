@@ -14,38 +14,43 @@ public class Processor {
         targetLength = length;
     }
 
-    public void processText() {
-
-        if (text == null || text.length() == 0) {
-            System.out.println("Текст порожній.");
-            return;
-        }
-
-        if (targetLength <= 0) {
-            System.out.println("Довжина слова має бути більшою за 0.");
-            return;
-        }
-
-
-        String[] sentences = text.toString().split("(?<=[.!?])\\s*");
+    public Set<String> processText() {
         Set<String> uniqueWords = new HashSet<>();
+        if (this.text == null || this.text.length() == 0 || this.targetLength <= 0) {
+            return uniqueWords;
+        }
+        int sentenceStart = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char currentChar = text.charAt(i);
+            if (currentChar == '.' || currentChar == '!' || currentChar == '?') {
+                if (currentChar == '?') {
+                    StringBuilder currentWord = new StringBuilder();
+                    for (int j = sentenceStart; j < i; j++) {
+                        char wordChar = text.charAt(j);
+                        if (Character.isLetter(wordChar)) {
+                            currentWord.append(wordChar);
+                        } else {
 
-        for (String sentence : sentences) {
-            if (sentence.endsWith("?")) {
-                String cleanSentence = sentence.replaceAll("[^a-zA-Zа-яА-ЯіІїЇєЄґҐ\\s]", "");
-                String[] words = cleanSentence.split("\\s+");
-                for (String word : words) {
-                    if (word.length() == targetLength) {
-                        uniqueWords.add(word.toLowerCase());
+                            if (currentWord.length() == this.targetLength) {
+
+                                uniqueWords.add(currentWord.toString().toLowerCase());
+                            }
+                            currentWord.setLength(0);
+                        }
                     }
+
+                    if (currentWord.length() == this.targetLength) {
+                        uniqueWords.add(currentWord.toString().toLowerCase());
+                    }
+                }
+
+                sentenceStart = i + 1;
+                while (sentenceStart < text.length() && Character.isWhitespace(text.charAt(sentenceStart))) {
+                    sentenceStart++;
                 }
             }
         }
 
-        if (uniqueWords.isEmpty()) {
-            System.out.println("Слів заданої довжини у питальних реченнях не знайдено.");
-        } else {
-            System.out.println("Знайдені унікальні слова: " + uniqueWords);
-        }
+        return uniqueWords;
     }
 }
