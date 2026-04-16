@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 import static org.junit.jupiter.api.Assertions.*;
 
-class Lab2Test {
+class lab2Test {
 
     private Processor processor;
 

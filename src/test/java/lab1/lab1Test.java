@@ -3,7 +3,7 @@ package lab1;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class Lab1Test {
+class lab1Test {
 
     @Test
     void testXorOperations() {
