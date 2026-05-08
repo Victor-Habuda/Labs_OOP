@@ -11,7 +11,6 @@ public abstract class TrainCar {
         return id;
     }
 
-    // Абстрактні методи, щоб Train міг звертатися до них у циклі
     public abstract int getLuggage();
     public abstract int getCapacity();
 }

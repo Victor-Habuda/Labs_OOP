@@ -5,7 +5,6 @@ public class lab3 {
         getVariant();
         Block air = new Block(0, "block", "air.png", false, false);
 
-
     }
     public static void getVariant(){
         int id = 5103;
